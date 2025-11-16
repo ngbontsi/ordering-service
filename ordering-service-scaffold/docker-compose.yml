@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: orders
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5433:5432
+  redis:
+    image: redis:7
+    ports:
+      - 6379:6379
+  redpanda:
+    image: vectorized/redpanda:latest
+    command: redpanda start --overprovisioned --smp 1 --memory 1G --reserve-memory 0M
+    ports:
+      - 9093:9092

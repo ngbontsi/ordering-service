@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/orders
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+kafka:
+  bootstrap-servers: localhost:9092
+spring:
+  redis:
+    host: localhost
+    port: 6379
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+server:
+  port: 8082
